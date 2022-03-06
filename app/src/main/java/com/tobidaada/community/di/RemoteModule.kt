@@ -43,14 +43,12 @@ object RemoteModule {
     @Provides
     @Singleton
     fun providesOkHttpClient(
-        interceptor: Interceptor,
         chuckerInterceptor: ChuckerInterceptor
     ): OkHttpClient =
         OkHttpClient.Builder()
             .connectTimeout(30, TimeUnit.SECONDS)
             .retryOnConnectionFailure(true)
             .addInterceptor(chuckerInterceptor)
-            .addInterceptor(interceptor)
             .build()
 
     @Provides
