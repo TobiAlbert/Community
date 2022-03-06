@@ -7,5 +7,5 @@ import retrofit2.http.Path
 interface CommunityService {
 
     @GET("community_{page}.json")
-    fun getCommunity(@Path("page") page: Int): Response<Community>
+    suspend fun getMembers(@Path("page") page: Int): Response<CommunityResponse>
 }

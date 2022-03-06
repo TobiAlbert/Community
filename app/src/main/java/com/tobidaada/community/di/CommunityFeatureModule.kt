@@ -1,7 +1,9 @@
 package com.tobidaada.community.di
 
+import com.tobidaada.community.features.community.data.datasource.local.LocalDataSourceImpl
 import com.tobidaada.community.features.community.data.datasource.remote.RemoteDataSourceImpl
 import com.tobidaada.community.features.community.data.repository.CommunityRepositoryImpl
+import com.tobidaada.community.features.community.data.repository.LocalDataSource
 import com.tobidaada.community.features.community.data.repository.RemoteDataSource
 import com.tobidaada.community.features.community.domain.CommunityRepository
 import dagger.Binds
@@ -16,6 +18,11 @@ abstract class CommunityFeature {
     abstract fun bindsRemoteDataSource(
         remoteDataSourceImpl: RemoteDataSourceImpl
     ): RemoteDataSource
+
+    @Binds
+    abstract fun bindsLocalDataSource(
+        localDataSourceImpl: LocalDataSourceImpl
+    ): LocalDataSource
 }
 
 @Module

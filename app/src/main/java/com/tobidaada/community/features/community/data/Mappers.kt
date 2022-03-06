@@ -1,9 +1,9 @@
 package com.tobidaada.community.features.community.data
 
-import com.tobidaada.community.features.community.data.datasource.remote.UserRemote
+import com.tobidaada.community.features.community.data.datasource.shared.UserDataSource
 import com.tobidaada.community.features.community.data.models.UserData
 
-fun UserRemote.toDataObject(): UserData =
+fun UserDataSource.toDataObject(): UserData =
     UserData(
         id = id,
         topic = topic,

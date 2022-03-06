@@ -5,5 +5,7 @@ import com.tobidaada.community.features.community.domain.entities.User
 import kotlinx.coroutines.flow.Flow
 
 interface CommunityRepository {
-    fun getCommunityMembers(page: Int): Flow<ResultWrapper<List<User>>>
+    fun getMembers(page: Int): Flow<ResultWrapper<List<User>>>
+
+    suspend fun updateMemberLike(userId: Int, isLiked: Boolean)
 }

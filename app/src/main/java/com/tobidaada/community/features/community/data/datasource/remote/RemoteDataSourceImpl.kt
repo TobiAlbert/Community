@@ -18,9 +18,9 @@ class RemoteDataSourceImpl @Inject constructor(
 
     override suspend fun getCommunityMembers(page: Int): ResultWrapper<List<UserData>> =
         withContext(ioDispatcher) {
-            val response: ResultWrapper<Community> = safeApiCall(ioDispatcher) { communityService.getCommunity(page) }
+            val response: ResultWrapper<CommunityResponse> = safeApiCall(ioDispatcher) { communityService.getMembers(page) }
 
-            return@withContext transformResponse(response) { result: ResultWrapper.Success<Community> ->
+            return@withContext transformResponse(response) { result: ResultWrapper.Success<CommunityResponse> ->
                 result.value.response.map { it.toDataObject() }
             }
         }
