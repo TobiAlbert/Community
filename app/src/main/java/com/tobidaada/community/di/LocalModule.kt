@@ -26,4 +26,8 @@ object LocalModule {
     @Provides
     @Singleton
     fun provideCommunityDao(db: AppDatabase) = db.communityDao()
+
+    @Provides
+    @Singleton
+    fun provideRemoteKeysDao(db: AppDatabase) = db.remoteKeysDao()
 }

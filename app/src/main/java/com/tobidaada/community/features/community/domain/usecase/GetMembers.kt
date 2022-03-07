@@ -1,7 +1,7 @@
 package com.tobidaada.community.features.community.domain.usecase
 
+import androidx.paging.PagingData
 import com.tobidaada.community.di.IOCoroutineDispatcher
-import com.tobidaada.community.features.community.ResultWrapper
 import com.tobidaada.community.features.community.domain.CommunityRepository
 import com.tobidaada.community.features.community.domain.entities.User
 import kotlinx.coroutines.CoroutineDispatcher
@@ -14,7 +14,7 @@ class GetMembers @Inject constructor(
     @IOCoroutineDispatcher private val ioDispatcher: CoroutineDispatcher
 ) {
 
-    suspend operator fun invoke(page: Int): Flow<ResultWrapper<List<User>>> =
-        withContext(ioDispatcher) { communityRepository.getMembers(page) }
+    suspend operator fun invoke(): Flow<PagingData<User>> =
+        withContext(ioDispatcher) { communityRepository.getMembers() }
 }
 

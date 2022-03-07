@@ -1,10 +1,9 @@
 package com.tobidaada.community.di
 
+import androidx.paging.ExperimentalPagingApi
 import com.tobidaada.community.features.community.data.datasource.local.LocalDataSourceImpl
-import com.tobidaada.community.features.community.data.datasource.remote.RemoteDataSourceImpl
 import com.tobidaada.community.features.community.data.repository.CommunityRepositoryImpl
 import com.tobidaada.community.features.community.data.repository.LocalDataSource
-import com.tobidaada.community.features.community.data.repository.RemoteDataSource
 import com.tobidaada.community.features.community.domain.CommunityRepository
 import dagger.Binds
 import dagger.Module
@@ -15,11 +14,6 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 abstract class CommunityFeature {
     @Binds
-    abstract fun bindsRemoteDataSource(
-        remoteDataSourceImpl: RemoteDataSourceImpl
-    ): RemoteDataSource
-
-    @Binds
     abstract fun bindsLocalDataSource(
         localDataSourceImpl: LocalDataSourceImpl
     ): LocalDataSource
@@ -28,6 +22,7 @@ abstract class CommunityFeature {
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class CommunityRepositoryModule {
+    @OptIn(ExperimentalPagingApi::class)
     @Binds
     abstract fun bindsCommunityRepository(
         communityRepositoryImpl: CommunityRepositoryImpl
