@@ -10,7 +10,7 @@ import com.tobidaada.community.features.community.data.datasource.shared.UserDat
 interface CommunityDao {
 
     @Transaction
-    @Query("SELECT * FROM users")
+    @Query("SELECT * FROM users ORDER BY id ASC")
     fun getMembers(): PagingSource<Int, UserWithLike>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

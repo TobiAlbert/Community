@@ -10,6 +10,7 @@ import com.tobidaada.community.features.community.domain.entities.User
 import com.tobidaada.community.utils.NETWORK_PAGE_SIZE
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -34,7 +35,7 @@ class CommunityRepositoryImpl @Inject constructor(
         )
         .flow.map { pagingData: PagingData<UserWithLike> ->
             pagingData.map { it.toDomainObject() }
-        }
+        }.flowOn(ioDispatcher)
     }
 
     override suspend fun updateMemberLike(userId: Int, isLiked: Boolean) =

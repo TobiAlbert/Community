@@ -20,7 +20,7 @@ data class Like(
     @ColumnInfo(name = "user_id")
     val id: Int,
 
-    @ColumnInfo(name = "id_liked")
+    @ColumnInfo(name = "is_liked")
     val isLiked: Boolean = false
 )
 

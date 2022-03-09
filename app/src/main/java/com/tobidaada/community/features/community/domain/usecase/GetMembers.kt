@@ -6,6 +6,7 @@ import com.tobidaada.community.features.community.domain.CommunityRepository
 import com.tobidaada.community.features.community.domain.entities.User
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -14,7 +15,7 @@ class GetMembers @Inject constructor(
     @IOCoroutineDispatcher private val ioDispatcher: CoroutineDispatcher
 ) {
 
-    suspend operator fun invoke(): Flow<PagingData<User>> =
-        withContext(ioDispatcher) { communityRepository.getMembers() }
+    operator fun invoke(): Flow<PagingData<User>> =
+        communityRepository.getMembers().flowOn(ioDispatcher)
 }
 
