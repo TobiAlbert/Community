@@ -37,8 +37,10 @@ class MemberActivity : AppCompatActivity() {
         }
 
         lifecycleScope.launch {
-            memberViewModel.getMembers().distinctUntilChanged()
-                .collectLatest { memberAdapter.submitData(it) }
+            memberViewModel
+                .getMembers()
+                .distinctUntilChanged()
+                .collectLatest(memberAdapter::submitData)
         }
     }
 

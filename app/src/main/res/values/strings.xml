@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">Community</string>
     <string name="sample_name">Jonathan</string>
-    <string name="chip_new_label">New</string>
     <string name="sample_reference_count">12</string>
     <string name="sample_topic">I can help you learn English and Spanish</string>
     <string name="retry">Retry</string>
+    <string name="new_label">New</string>
+    <string name="native_label">Native %s</string>
+    <string name="learns_label">Learns %s</string>
 </resources>
