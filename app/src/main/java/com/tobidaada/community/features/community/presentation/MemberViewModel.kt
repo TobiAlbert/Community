@@ -21,8 +21,7 @@ class MemberViewModel @Inject constructor(
     @IOCoroutineDispatcher private val ioDispatcher: CoroutineDispatcher
 ): ViewModel() {
 
-    fun getMembers(): Flow<PagingData<User>> =
-        getMembers.invoke().cachedIn(viewModelScope)
+    var pagingFlow: Flow<PagingData<User>> = getMembers.invoke().cachedIn(viewModelScope)
 
     fun updateMemberLike(userId: Int, isLiked: Boolean) {
         viewModelScope.launch(ioDispatcher) {

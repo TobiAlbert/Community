@@ -56,11 +56,6 @@ class CommunityRemoteMediator @Inject constructor(
             val endOfPaginationReached = users.size < NETWORK_PAGE_SIZE
 
             appDatabase.withTransaction {
-                // clear all tables in the db
-                if (loadType == LoadType.REFRESH) {
-                    appDatabase.communityDao().clearAll()
-                    appDatabase.remoteKeysDao().clearRemoteKeys()
-                }
 
                 val prevKey = if (page == COMMUNITY_STARTING_PAGE_INDEX) null else page - 1
                 val nextKey = if (endOfPaginationReached) null else page + 1

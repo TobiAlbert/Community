@@ -3,7 +3,9 @@ package com.tobidaada.community.features.community.presentation
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.tobidaada.community.databinding.ActivityMemberBinding
 import com.tobidaada.community.features.community.presentation.paging.loadstateadapter.MemberLoadStateAdapter
@@ -37,10 +39,12 @@ class MemberActivity : AppCompatActivity() {
         }
 
         lifecycleScope.launch {
-            memberViewModel
-                .getMembers()
-                .distinctUntilChanged()
-                .collectLatest(memberAdapter::submitData)
+            repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                memberViewModel
+                    .pagingFlow
+                    .distinctUntilChanged()
+                    .collectLatest(memberAdapter::submitData)
+            }
         }
     }
 

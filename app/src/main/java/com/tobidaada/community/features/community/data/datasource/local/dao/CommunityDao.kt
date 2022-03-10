@@ -13,7 +13,7 @@ interface CommunityDao {
     @Query("SELECT * FROM users ORDER BY id ASC")
     fun getMembers(): PagingSource<Int, UserWithLike>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addCommunityMembers(members: List<UserDataSource>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
