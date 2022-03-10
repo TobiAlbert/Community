@@ -9,3 +9,14 @@
 
 ## Getting Started
 Clone the repo with `git clone git@github.com:TobiAlbert/Community.git`
+
+## Libraries/Technologies Used
+- Hilt
+- Coroutines
+- Retrofit
+- Coil (for Image loading)
+- Room
+- Paging Library
+- Chucker
+- Espresso
+- Truth (by Google)
