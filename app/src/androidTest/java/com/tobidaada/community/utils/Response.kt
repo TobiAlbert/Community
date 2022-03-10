@@ -7,7 +7,7 @@ fun getSuccessResponse(size: Int): CommunityResponse {
     val data = mutableListOf<UserDataSource>()
 
     repeat(size) { count: Int ->
-        data += createUserResponse(count)
+        data += createUserDataSource(count)
     }
 
     return CommunityResponse(
@@ -17,7 +17,7 @@ fun getSuccessResponse(size: Int): CommunityResponse {
     )
 }
 
-private fun createUserResponse(id: Int): UserDataSource =
+fun createUserDataSource(id: Int): UserDataSource =
     UserDataSource(
         id = id,
         topic = "This is a random topic",
