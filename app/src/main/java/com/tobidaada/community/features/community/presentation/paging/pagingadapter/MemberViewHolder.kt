@@ -66,7 +66,7 @@ class MemberViewHolder(
         }
 
         textView.visibility = View.VISIBLE
-        val stringText = context.getString(text, languages.first()).uppercase()
+        val stringText = context.getString(text, languages.joinToString(", ")).uppercase()
         val spannable = SpannableString(stringText)
 
         val startIndex = 6
