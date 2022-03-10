@@ -51,7 +51,7 @@ class CommunityRemoteMediator @Inject constructor(
 
         return try {
             val apiResponse = communityService.getMembers(page)
-            val users = apiResponse.body()?.response ?: return MediatorResult.Error(Exception("Unable to get Response"))
+            val users = apiResponse.response
 
             val endOfPaginationReached = users.size < NETWORK_PAGE_SIZE
 
